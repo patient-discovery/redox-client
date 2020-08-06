@@ -1,0 +1,121 @@
+#!/usr/bin/env ruby
+
+# frozen_string_literal: true
+
+require "yaml"
+require "json"
+
+class Scrubber
+  def initialize(file)
+    @file = file
+    @contents = YAML.load_file(file)
+  end
+
+  def check
+    @contents["http_interactions"].each { |interaction| check_interaction interaction }
+  end
+
+  def scrub
+    @contents["http_interactions"].each { |interaction| scrub_interaction interaction }
+    IO.write(@file, YAML.dump(@contents))
+  end
+
+  def check_interaction(interaction)
+    check_request_body(interaction)
+    check_request_headers(interaction)
+    check_response_body(interaction)
+  end
+
+  def scrub_interaction(interaction)
+    scrub_request_body(interaction)
+    scrub_request_headers(interaction)
+    scrub_response_body(interaction)
+  end
+
+  def check_request_body(interaction)
+    body = get_request_body interaction
+    if body
+      %w[apiKey secret].each { |k| check_credential k, body[k] }
+    end
+  end
+
+  def check_request_headers(interaction)
+    auth = get_request_authorization interaction
+    if auth && !auth.empty?
+      check_credential("Authorization", auth[0].delete_prefix("Bearer "))
+    end
+  end
+
+  def check_response_body(interaction)
+    body = get_response_body interaction
+    if body
+      %w[accessToken refreshToken].each { |k| check_credential k, body[k] }
+    end
+  end
+
+  def scrub_request_body(interaction)
+    check_response_body interaction
+  rescue
+    set_request_body(interaction, {
+      "apiKey" => "test-api-key",
+      "secret" => "test-secret"
+    })
+  end
+
+  def scrub_request_headers(interaction)
+    check_request_headers interaction
+  rescue
+    set_request_authorization interaction, ["Bearer test-access-token"]
+  end
+
+  def scrub_response_body(interaction)
+    check_response_body interaction
+  rescue
+    set_response_body(interaction, {
+      "accessToken" => "test-access-token",
+      "refreshToken" => "test-refresh-token",
+      "expires" => "<%= DateTime.now + 1 %>"
+    })
+  end
+
+  def get_request_body(interaction)
+    body = interaction.dig "request", "body", "string"
+    JSON.parse(body) if body
+  end
+
+  def set_request_body(interaction, body)
+    interaction["request"]["body"]["string"] = body.to_json
+  end
+
+  def get_response_body(interaction)
+    body = interaction.dig "response", "body", "string"
+    JSON.parse(body) if body
+  end
+
+  def set_response_body(interaction, body)
+    interaction["response"]["body"]["string"] = body.to_json
+  end
+
+  def get_request_authorization(interaction)
+    interaction.dig "request", "headers", "Authorization"
+  end
+
+  def set_request_authorization(interaction, authorization)
+    interaction["request"]["headers"]["Authorization"] = authorization
+  end
+
+  def check_credential(name, credential)
+    return if credential.nil?
+    return if credential.start_with?("test-") && credential.length < 20
+    raise "Invalid test credential in #{@file}: #{name}"
+  end
+end
+
+cassettes = Dir["spec/cassettes/**/*.yml"]
+scrubbing = ARGV[0] == "--scrub"
+
+cassettes.each do |f|
+  puts "Scrubbing #{f} ..." if scrubbing
+  s = Scrubber.new f
+  scrubbing ? s.scrub : s.check
+end

@@ -1,0 +1,124 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://candi.redoxengine.com/auth/authenticate
+    body:
+      encoding: UTF-8
+      string: '{"apiKey":"test-api-key","secret":"test-secret"}'
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Faraday v1.0.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Wed, 12 Aug 2020 02:06:36 GMT
+      content-type:
+      - application/json; charset=utf-8
+      content-length:
+      - '145'
+      connection:
+      - keep-alive
+      strict-transport-security:
+      - max-age=300; includeSubdomains;
+      content-security-policy:
+      - 'default-src https:; style-src https: ''unsafe-inline''; object-src ''none'''
+      x-content-security-policy:
+      - 'default-src https:; style-src https: ''unsafe-inline''; object-src ''none'''
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - deny
+      x-xss-protection:
+      - 1; mode=block
+      referrer-policy:
+      - same-origin
+      cache-control:
+      - private, no-cache, no-store, must-revalidate
+      expires:
+      - "-1"
+      pragma:
+      - no-cache
+      etag:
+      - W/"91-yesAldwrgD6laxgxmjWrmw"
+      vary:
+      - Accept-Encoding
+    body:
+      encoding: UTF-8
+      string: '{"accessToken":"test-api-key","refreshToken":"test-secret","expires":"<%=
+        DateTime.now + 1 %>"}'
+  recorded_at: Wed, 12 Aug 2020 02:06:36 GMT
+- request:
+    method: post
+    uri: https://candi.redoxengine.com/endpoint
+    body:
+      encoding: UTF-8
+      string: '{"Patient":{"Demographics":{"FirstName":"Timothy","MiddleName":"Paul","LastName":"Bixby","DOB":"2008-01-06","SSN":"101-01-0001","Sex":"Male","Address":{"StreetAddress":"4762
+        Hickory Street","City":"Monroe","State":"WI","ZIP":"53566","County":"Green","Country":"US"}}},"Meta":{"DataModel":"PatientSearch","EventType":"Query","EventDateTime":"2020-08-11T22:06:36-04:00","Destinations":[{"ID":"6310353a-eed7-44a1-b2bc-d017f4f33d64"}]}}'
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Faraday v1.0.1
+      Authorization:
+      - Bearer test-access-token
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Wed, 12 Aug 2020 02:06:36 GMT
+      content-type:
+      - application/json; charset=utf-8
+      transfer-encoding:
+      - chunked
+      connection:
+      - keep-alive
+      strict-transport-security:
+      - max-age=300; includeSubdomains;
+      content-security-policy:
+      - 'default-src https:; style-src https: ''unsafe-inline''; object-src ''none'''
+      x-content-security-policy:
+      - 'default-src https:; style-src https: ''unsafe-inline''; object-src ''none'''
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - deny
+      x-xss-protection:
+      - 1; mode=block
+      referrer-policy:
+      - same-origin
+      cache-control:
+      - private, no-cache, no-store, must-revalidate
+      expires:
+      - "-1"
+      pragma:
+      - no-cache
+      etag:
+      - W/"923-tqRFodrmZ1cuBuOTOKERHA"
+      vary:
+      - Accept-Encoding
+    body:
+      encoding: ASCII-8BIT
+      string: '{"Patient":{"Identifiers":[{"ID":"0000000001","IDType":"MR"},{"ID":"e167267c-16c9-4fe3-96ae-9cff5703e90a","IDType":"EHRID"},{"ID":"a1d4ee8aba494ca","IDType":"NIST"}],"Demographics":{"FirstName":"Timothy","MiddleName":"Paul","LastName":"Bixby","DOB":"2008-01-06","Sex":"Male","Address":{"StreetAddress":"4762
+        Hickory Street","City":"Monroe","State":"WI","County":"Green","ZIP":"53566","Country":"US"},"PhoneNumber":{"Home":"+18088675301"},"MaritalStatus":"Married","IsDeceased":false,"SSN":"101-01-0001","Race":"White","Language":"en"},"PCP":{"NPI":"4356789876","ID":"4356789876","IDType":"NPI","FirstName":"Pat","LastName":"Granite","Address":{"StreetAddress":"123
+        Main St.","City":"Madison","State":"WI","County":"Dane","ZIP":"53703","Country":"USA"},"PhoneNumber":{"Office":"+16085551234"},"Credentials":["MD"]},"Contacts":[{"FirstName":"Barbara","LastName":"Bixby","PhoneNumber":{"Home":"+18088675303","Office":"+17077543758","Mobile":"+19189368865"},"EmailAddresses":["barb.bixby@test.net"],"Address":{"StreetAddress":"4762
+        Hickory Street","City":"Monroe","State":"WI","County":"Green","ZIP":"53566","Country":"US"},"RelationToPatient":"Mother","Roles":["Emergency
+        Contact"]}],"Insurances":[{"PolicyNumber":"9140860055","EffectiveDate":"2015-01-01","ExpirationDate":"2020-12-31","GroupNumber":"847025-024-0009","GroupName":"Accelerator
+        Labs","Plan":{"ID":"31572","Name":"HMO Deductable Plan"},"Company":{"ID":"60054","Name":"aetna
+        (60054 0131)","Address":{"StreetAddress":"PO Box 14080","City":"Lexington","State":"KY","County":"Fayette","ZIP":"40512-4079","Country":"US"},"PhoneNumber":"+18089541123"}}],"Guarantor":{"Number":"10001910","FirstName":"Kent","LastName":"Bixby","Address":{"StreetAddress":"4762
+        Hickory Street","City":"Monroe","State":"WI","County":"Green","ZIP":"53566","Country":"USA"},"RelationToPatient":"Father","Spouse":{"FirstName":"Barbara","LastName":"Bixby"},"Employer":{"Name":"Accelerator
+        Labs","Address":{"StreetAddress":"1456 Old Sauk Road","City":"Madison","State":"WI","County":"Dane","ZIP":"53719","Country":"USA"},"PhoneNumber":"+18083451121"}}},"Meta":{"DataModel":"PatientSearch","EventType":"Query","Message":{"ID":4536424260},"Source":{"ID":"c4af9824-fd44-4515-bbd0-d4cf83f9888a"},"Destinations":[{"ID":"6310353a-eed7-44a1-b2bc-d017f4f33d64","Name":"Redox
+        Data On Demand Sandbox Destination (s)"}]}}'
+  recorded_at: Wed, 12 Aug 2020 02:06:36 GMT
+recorded_with: VCR 6.0.0
