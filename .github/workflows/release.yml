@@ -37,6 +37,11 @@ jobs:
       - name: rake test
         run: bundle exec rake test
 
+      - name: Set git identity
+        run: |
+          git config user.email "mike@patientdiscovery.com"
+          git config user.name "Michael Keirnan"
+
       - name: Setup rubygems and Github credentials
         run: |
           mkdir -p ~/.gem
