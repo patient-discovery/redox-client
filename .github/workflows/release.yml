@@ -9,7 +9,7 @@ on:
       - release
 
 jobs:
-  test:
+  release:
     runs-on: ubuntu-latest
 
     steps:
@@ -37,29 +37,17 @@ jobs:
       - name: rake test
         run: bundle exec rake test
 
-  release:
-    runs-on: ubuntu-latest
+      - name: Setup rubygems credentials
+        run: |
+          mkdir -p ~/.gem
+          cat << EOF > ~/.gem/credentials
+          ---
+          :rubygems_api_key: ${secrets.RUBYGEMS_API_KEY}
+          EOF
 
-    steps:
-      - uses: actions/checkout@v2
+          chmod 0600 ~/.gem/credentials
 
-      - name: Cache ruby gems
-        uses: actions/cache@v1
-        with:
-          path: vendor/bundle
-          key: ${{ runner.OS }}-gem-${{ hashFiles('**/Gemfile.lock') }}
-          restore-keys: |
-            ${{ runner.OS }}-gem-
-
-      - name: Install bundler
-        run: sudo gem install bundler -v "~>2.0" --no-document
-
-      - name: bundle install
-        run: bundle install --jobs 4 --retry 3
-
-      - name: Release gem
-        uses: cadwallion/publish-rubygems-action@master
+      - name: Release
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-          RUBYGEMS_API_KEY: ${{secrets.RUBYGEMS_API_KEY}}
-          RELEASE_COMMAND: bundle exec rake release
+        run: bundle exec rake release
