@@ -99,3 +99,7 @@ Run `rake` to run the style checks. Run `rake fix` to fix violations.
 - `bin/check-vcr-cassettes --scrub` - attempt to replace real looking credentials in VCR cassettes with dummy test values.
 - `rake -T` - see available rake tasks
 - `bin/console` - get an interactive prompt for experimenting
+
+### Release Process
+- push to release branch or merge release PR from master
+- Github action tags the release and pushes the gem to rubygems
