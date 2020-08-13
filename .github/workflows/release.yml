@@ -37,22 +37,16 @@ jobs:
       - name: rake test
         run: bundle exec rake test
 
-      - name: Setup rubygems credentials
+      - name: Setup rubygems and Github credentials
         run: |
           mkdir -p ~/.gem
           cat << EOF > ~/.gem/credentials
           ---
+          :github: Bearer ${{ secrets.GITHUB_TOKEN }}
           :rubygems_api_key: ${{ secrets.RUBYGEMS_API_KEY }}
           EOF
 
           chmod 0600 ~/.gem/credentials
 
-      - name: Set git identity
-        run: |
-          git config user.email "mike@patientdiscovery.com"
-          git config user.name "Michael Keirnan"
-
       - name: Release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: bundle exec rake release
