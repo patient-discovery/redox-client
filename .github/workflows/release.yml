@@ -29,7 +29,7 @@ jobs:
             ${{ runner.OS }}-gem-
 
       - name: Install bundler
-        run: sudo gem install bundler -v "~>2.0" --no-document
+        run: gem install bundler -v "~>2.0" --no-document
 
       - name: bundle install
         run: bundle install --jobs 4 --retry 3
@@ -52,7 +52,7 @@ jobs:
             ${{ runner.OS }}-gem-
 
       - name: Install bundler
-        run: gem install bundler -v "~>2.0" --no-document
+        run: sudo gem install bundler -v "~>2.0" --no-document
 
       - name: bundle install
         run: bundle install --jobs 4 --retry 3
