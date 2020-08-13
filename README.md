@@ -101,5 +101,5 @@ Run `rake` to run the style checks. Run `rake fix` to fix violations.
 - `bin/console` - get an interactive prompt for experimenting
 
 ### Release Process
-- push to release branch or merge release PR from master
+- push to release branch
 - Github action tags the release and pushes the gem to rubygems
