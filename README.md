@@ -101,5 +101,9 @@ Run `rake` to run the style checks. Run `rake fix` to fix violations.
 - `bin/console` - get an interactive prompt for experimenting
 
 ### Release Process
-- push to release branch
+- This project uses [Semantic Versioning](https://semver.org)
+- Prepare release on master branch
+- Update [CHANGELOG](CHANGELOG.md) and [version.rb](lib/redox/version.rb)
+  - git commit -m 'Release ...'
+- Merge master branch to release and push release branch
 - Github action tags the release and pushes the gem to rubygems
