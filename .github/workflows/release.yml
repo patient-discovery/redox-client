@@ -47,6 +47,11 @@ jobs:
 
           chmod 0600 ~/.gem/credentials
 
+      - name: Set git identity
+        run: |
+          git config user.email "mike@patientdiscovery.com"
+          git config user.name "Michael Keirnan"
+
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
