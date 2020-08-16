@@ -10,20 +10,9 @@ RSpec.describe Redox::PatientSearch::Query do
         patient: Redox::Models::Patient.new(
           demographics: Redox::Models::Demographics.new(
             first_name: "Timothy",
-            middle_name: "Paul",
             last_name: "Bixby",
             dob: "2008-01-06",
-            ssn: "101-01-0001",
-            sex: "Male",
-            race: "White",
-            address: Redox::Models::Address.new(
-              street_address: "4762 Hickory Street",
-              city: "Monroe",
-              state: "WI",
-              zip: "53566",
-              county: "Green",
-              country: "US"
-            )
+            address: Redox::Models::Address.new(zip: "53566")
           )
         )
       )
@@ -37,6 +26,23 @@ RSpec.describe Redox::PatientSearch::Query do
         ),
         Redox::Models::PatientIdentifier.new(id_type: "NIST", id: "a1d4ee8aba494ca")
       ]
+    end
+  end
+
+  context "no match" do
+    it "returns result with empty Patient", :vcr do
+      query = Redox::PatientSearch::Query.new(
+        patient: Redox::Models::Patient.new(
+          demographics: Redox::Models::Demographics.new(
+            first_name: "Tim",
+            last_name: "Bixby",
+            dob: "2008-01-06",
+            address: Redox::Models::Address.new(zip: "53566")
+          )
+        )
+      )
+      result = query.perform source, destination_id
+      expect(result.patient.identifiers).to be nil
     end
   end
 end

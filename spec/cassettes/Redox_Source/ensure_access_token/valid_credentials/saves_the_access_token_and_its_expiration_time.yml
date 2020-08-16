@@ -52,6 +52,7 @@ http_interactions:
       - Accept-Encoding
     body:
       encoding: UTF-8
-      string: '{"accessToken":"test-access-token","expires":"<%= DateTime.now + 1 %>","refreshToken":"test-refresh-token"}'
+      string: '{"accessToken":"test-access-token","expires":"<%= DateTime.now + 1
+        %>","refreshToken":"test-refresh-token"}'
   recorded_at: Sun, 02 Aug 2020 14:00:41 GMT
 recorded_with: VCR 6.0.0

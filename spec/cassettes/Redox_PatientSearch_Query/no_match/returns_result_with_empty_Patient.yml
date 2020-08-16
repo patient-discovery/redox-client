@@ -1,0 +1,115 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://candi.redoxengine.com/auth/authenticate
+    body:
+      encoding: UTF-8
+      string: '{"apiKey":"test-api-key","secret":"test-secret"}'
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Faraday v1.0.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Sun, 16 Aug 2020 20:44:09 GMT
+      content-type:
+      - application/json; charset=utf-8
+      content-length:
+      - '145'
+      connection:
+      - keep-alive
+      strict-transport-security:
+      - max-age=300; includeSubdomains;
+      content-security-policy:
+      - 'default-src https:; style-src https: ''unsafe-inline''; object-src ''none'''
+      x-content-security-policy:
+      - 'default-src https:; style-src https: ''unsafe-inline''; object-src ''none'''
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - deny
+      x-xss-protection:
+      - 1; mode=block
+      referrer-policy:
+      - same-origin
+      cache-control:
+      - private, no-cache, no-store, must-revalidate
+      expires:
+      - "-1"
+      pragma:
+      - no-cache
+      etag:
+      - W/"91-uFh3vp4Oait8yJMaQjmuig"
+      vary:
+      - Accept-Encoding
+    body:
+      encoding: UTF-8
+      string: '{"accessToken":"test-access-token","refreshToken":"test-refresh-token","expires":"<%=
+        DateTime.now + 1 %>"}'
+  recorded_at: Sun, 16 Aug 2020 20:44:09 GMT
+- request:
+    method: post
+    uri: https://candi.redoxengine.com/endpoint
+    body:
+      encoding: UTF-8
+      string: '{"Patient":{"Demographics":{"FirstName":"Tim","LastName":"Bixby","DOB":"2008-01-06","Address":{"ZIP":"53566"}}},"Meta":{"DataModel":"PatientSearch","EventType":"Query","EventDateTime":"2020-08-16T16:44:08-04:00","Destinations":[{"ID":"6310353a-eed7-44a1-b2bc-d017f4f33d64"}]}}'
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Faraday v1.0.1
+      Authorization:
+      - Bearer test-access-token
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Sun, 16 Aug 2020 20:44:09 GMT
+      content-type:
+      - application/json; charset=utf-8
+      content-length:
+      - '271'
+      connection:
+      - keep-alive
+      strict-transport-security:
+      - max-age=300; includeSubdomains;
+      content-security-policy:
+      - 'default-src https:; style-src https: ''unsafe-inline''; object-src ''none'''
+      x-content-security-policy:
+      - 'default-src https:; style-src https: ''unsafe-inline''; object-src ''none'''
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - deny
+      x-xss-protection:
+      - 1; mode=block
+      referrer-policy:
+      - same-origin
+      cache-control:
+      - private, no-cache, no-store, must-revalidate
+      expires:
+      - "-1"
+      pragma:
+      - no-cache
+      etag:
+      - W/"10f-sDl+g0lhXJfcJ8dMzAYnKg"
+      vary:
+      - Accept-Encoding
+    body:
+      encoding: UTF-8
+      string: '{"Patient":{},"Meta":{"DataModel":"PatientSearch","EventType":"Query","Message":{"ID":4569894581},"Source":{"ID":"c4af9824-fd44-4515-bbd0-d4cf83f9888a"},"Destinations":[{"ID":"6310353a-eed7-44a1-b2bc-d017f4f33d64","Name":"Redox
+        Data On Demand Sandbox Destination (s)"}]}}'
+  recorded_at: Sun, 16 Aug 2020 20:44:09 GMT
+recorded_with: VCR 6.0.0
