@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require "date"
 require "bundler/gem_tasks"
 require "rspec/core/rake_task"
 require "standard/rake"
@@ -23,6 +24,42 @@ desc "Check VCR cassettes for Redox credential leak"
 task :check_vcr_cassettes do
   # TODO: Make this a proper lib/rake_tasks.rb task and avoid exec'ing out
   raise "Possible credential leak" unless system "bin/check-vcr-cassettes"
+end
+
+task "prepare:changelog" do
+  repo = "https://github.com/patient-discovery/redox-client"
+  changelog = IO.readlines("CHANGELOG.md").map(&:chomp)
+  entries = [
+    "## [#{Redox::VERSION}] - #{Date.today}",
+    "[#{Redox::VERSION}]: #{repo}/releases/tag/v#{Redox::VERSION}",
+    "[Unreleased]: #{repo}/compare/v#{Redox::VERSION}...HEAD"
+  ]
+  unless entries.all? { |x| changelog.include? x }
+    puts "\nAdd these to CHANGELOG.md:\n\n"
+    puts entries.join("\n")
+    puts "\n\n"
+    abort "ERROR: CHANGELOG version entries needed"
+  end
+  puts "CHANGELOG looks good"
+end
+
+task "prepare:version" do
+  if system("git show-ref --tags v#{Redox::VERSION}")
+    abort("ERROR: Tag already exists. Check version.rb")
+  end
+end
+
+task "prepare:tag" do
+  unless system("git tag -m 'Version #{Redox::VERSION}' v#{Redox::VERSION}")
+    abort("ERROR: Unable to tag")
+  end
+end
+
+task "prepare:release": [
+  "release:guard_clean", "test", "prepare:version", "prepare:changelog", "prepare:tag"
+] do
+  puts "Release tagged. To create release run:\n\n"
+  puts "git push --follow-tags"
 end
 
 CLEAN.include "coverage"

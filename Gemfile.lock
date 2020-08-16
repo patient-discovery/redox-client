@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    redox-client (0.1.0)
+    redox-client (0.2.0)
       faraday (~> 1.0, >= 1.0.1)
       hashie (~> 4.1)
 

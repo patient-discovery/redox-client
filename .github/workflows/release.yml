@@ -2,8 +2,8 @@ name: Release
 
 on:
   push:
-    branches:
-      - release
+    tags:
+      - v*
 
 jobs:
   release:
@@ -51,4 +51,4 @@ jobs:
           chmod 0600 ~/.gem/credentials
 
       - name: Release
-        run: bundle exec rake release
+        run: bundle exec rake build release:rubygem_push
