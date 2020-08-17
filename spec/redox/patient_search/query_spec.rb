@@ -45,4 +45,23 @@ RSpec.describe Redox::PatientSearch::Query do
       expect(result.patient.identifiers).to be nil
     end
   end
+
+  context "incomplete search criteria" do
+    it "raises with redox error data", :vcr do
+      query = Redox::PatientSearch::Query.new(
+        patient: Redox::Models::Patient.new(
+          demographics: Redox::Models::Demographics.new(
+            last_name: "Bixby",
+            address: Redox::Models::Address.new(zip: "53566")
+          )
+        )
+      )
+      expect {
+        query.perform source, destination_id
+      }.to raise_error do |error|
+        expect(error).to be_a(Redox::Error)
+        expect(error.message.meta.errors).to have_at_least(1).item
+      end
+    end
+  end
 end

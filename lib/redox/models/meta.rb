@@ -10,6 +10,7 @@ module Redox
       redox_property :EventDateTime
       redox_property :Test
       redox_property :Destinations, coerce: Array[Redox::Models::Destination]
+      redox_property :Errors, coerce: Array[Redox::Models::Error]
     end
   end
 end

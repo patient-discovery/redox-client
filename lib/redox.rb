@@ -6,6 +6,7 @@ require_relative "redox/model"
 require_relative "redox/models/address"
 require_relative "redox/models/demographics"
 require_relative "redox/models/destination"
+require_relative "redox/models/error"
 require_relative "redox/models/message"
 require_relative "redox/models/meta"
 require_relative "redox/models/patient"
@@ -16,6 +17,17 @@ require_relative "redox/source"
 require_relative "redox/patient_search/query.rb"
 
 module Redox
-  class Error < StandardError; end
+  class Error < StandardError
+    attr_accessor :status
+    attr_accessor :body
+    attr_accessor :message
+
+    def initialize(status: nil, body: nil, message: nil)
+      self.status = status
+      self.body = body
+      self.message = message
+    end
+  end
+
   class AuthenticationError < Error; end
 end

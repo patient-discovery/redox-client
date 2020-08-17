@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "rspec/expectations"
+require "rspec/collection_matchers"
 require "bundler/setup"
 require "redox"
 require "json"

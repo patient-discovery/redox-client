@@ -28,8 +28,21 @@ class Redox::Source
   def execute_query(model)
     ensure_access_token
     res = @connection.post("/endpoint", model.to_redox_json)
-    raise Redox::Error.new "#{res.status} #{res.body}" unless res.success?
-    JSON.parse(res.body)
+    message =
+      begin
+        JSON.parse(res.body)
+      rescue
+        nil
+      end
+
+    unless res.success?
+      raise Redox::Error.new(
+        status: res.status,
+        body: res.body,
+        message: Redox::Models::Message.from_redox_json(message)
+      )
+    end
+    message
   end
 
   def ensure_access_token
@@ -59,7 +72,7 @@ class Redox::Source
   def authenticate
     self.access_token = nil
     res = @connection.post("/auth/authenticate", {apiKey: @api_key, secret: @secret}.to_json)
-    raise Redox::AuthenticationError.new "#{res.status} #{res.body}" unless res.success?
+    raise Redox::AuthenticationError.new status: res.status, body: res.body unless res.success?
     data = JSON.parse(res.body)
     self.access_token = data["accessToken"]
     @access_token_expires_at = DateTime.parse(data["expires"])
