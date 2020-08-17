@@ -15,15 +15,20 @@ desc "Run all checks and tests"
 task default: :test
 
 desc "Run all checks and tests"
-task test: [:rubocop, :standard, :check_vcr_cassettes, :spec]
+task test: [:rubocop, :standard, :vcr, :spec]
 
 desc "Fix RuboCop and StandardRB violations"
 task fix: ["rubocop:auto_correct", "standard:fix"]
 
+# TODO: Make these a proper lib/rake_tasks.rb task and avoid exec'ing out
 desc "Check VCR cassettes for Redox credential leak"
-task :check_vcr_cassettes do
-  # TODO: Make this a proper lib/rake_tasks.rb task and avoid exec'ing out
-  raise "Possible credential leak" unless system "bin/check-vcr-cassettes"
+task "vcr" do
+  raise "Possible credential leak, run rake vcr:fix" unless system "bin/check-vcr-cassettes"
+end
+
+desc "Scrub VCR cassettes, replacing suspected real creds with test ones"
+task "vcr:fix" do
+  system "bin/check-vcr-cassettes --scrub"
 end
 
 task "prepare:changelog" do

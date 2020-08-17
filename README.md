@@ -96,7 +96,7 @@ Run `rake` to run the style checks. Run `rake fix` to fix violations.
 ### Useful commands
 - `rake` - run all tests (lint, Redox cred scan, rspec)
 - `rake fix` - Fix RuboCop and StandardRB violations
-- `bin/check-vcr-cassettes --scrub` - attempt to replace real looking credentials in VCR cassettes with dummy test values.
+- `rake vcr:fix` - attempt to replace real looking credentials in VCR cassettes with dummy test values.
 - `rake -T` - see available rake tasks
 - `bin/console` - get an interactive prompt for experimenting
 
