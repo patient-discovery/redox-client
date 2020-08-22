@@ -3,6 +3,7 @@
 ## [Unreleased]
 ### Added
 - _body attribute containing raw response text on query results
+- SchedulingBooked.Query
 
 ### Changed
 

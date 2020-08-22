@@ -77,6 +77,7 @@ Since `Redox::Source` has shared state, i.e., the access token and its expiratio
 ## Supported APIs
 
 - PatientSearch.Query
+- Scheduling.Booked
 
 ## Development
 ***Nota Bene**: This project uses [VCR](https://relishapp.com/vcr/vcr/docs) to record HTTP requests and responses and play them back during tests. Do NOT use Redox production credentials when developing tests.*

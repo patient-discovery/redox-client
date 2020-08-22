@@ -55,7 +55,7 @@ class Redox::Model < Hashie::Trash
   # rails `String.underscore` method with the following simplications:
   #
   # - any word in all caps is assumed to be an acronym (ZIP -> zip)
-  # - only alphabetic characters and modified
+  # - only alphabetic characters are modified
   #
   # Note: this function does not have an inverse. Both "Zip" and "ZIP"
   # map to "zip".

@@ -1,0 +1,115 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://candi.redoxengine.com/auth/authenticate
+    body:
+      encoding: UTF-8
+      string: '{"apiKey":"test-api-key","secret":"test-secret"}'
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Faraday v1.0.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Sat, 22 Aug 2020 22:20:21 GMT
+      content-type:
+      - application/json; charset=utf-8
+      content-length:
+      - '145'
+      connection:
+      - keep-alive
+      strict-transport-security:
+      - max-age=300; includeSubdomains;
+      content-security-policy:
+      - 'default-src https:; style-src https: ''unsafe-inline''; object-src ''none'''
+      x-content-security-policy:
+      - 'default-src https:; style-src https: ''unsafe-inline''; object-src ''none'''
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - deny
+      x-xss-protection:
+      - 1; mode=block
+      referrer-policy:
+      - same-origin
+      cache-control:
+      - private, no-cache, no-store, must-revalidate
+      expires:
+      - "-1"
+      pragma:
+      - no-cache
+      etag:
+      - W/"91-Ub+NgSPeuzgD3jfPxiZONQ"
+      vary:
+      - Accept-Encoding
+    body:
+      encoding: UTF-8
+      string: '{"accessToken":"test-access-token","expires":"<%= DateTime.now + 1
+        %>","refreshToken":"test-refresh-token"}'
+  recorded_at: Sat, 22 Aug 2020 22:20:21 GMT
+- request:
+    method: post
+    uri: https://candi.redoxengine.com/endpoint
+    body:
+      encoding: UTF-8
+      string: '{"StartDateTime":"1984-01-01T00:00:00+00:00","EndDateTime":"1984-01-02T00:00:00+00:00","Meta":{"DataModel":"Scheduling","EventType":"Booked","EventDateTime":"2020-08-22T18:20:21-04:00","Destinations":[{"ID":"6310353a-eed7-44a1-b2bc-d017f4f33d64"}]}}'
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Faraday v1.0.1
+      Authorization:
+      - Bearer test-access-token
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Sat, 22 Aug 2020 22:20:21 GMT
+      content-type:
+      - application/json; charset=utf-8
+      content-length:
+      - '268'
+      connection:
+      - keep-alive
+      strict-transport-security:
+      - max-age=300; includeSubdomains;
+      content-security-policy:
+      - 'default-src https:; style-src https: ''unsafe-inline''; object-src ''none'''
+      x-content-security-policy:
+      - 'default-src https:; style-src https: ''unsafe-inline''; object-src ''none'''
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - deny
+      x-xss-protection:
+      - 1; mode=block
+      referrer-policy:
+      - same-origin
+      cache-control:
+      - private, no-cache, no-store, must-revalidate
+      expires:
+      - "-1"
+      pragma:
+      - no-cache
+      etag:
+      - W/"10c-Qfznyu8cGgkdQxX/cMGi9g"
+      vary:
+      - Accept-Encoding
+    body:
+      encoding: UTF-8
+      string: '{"Visits":[],"Meta":{"DataModel":"Scheduling","EventType":"Booked","Message":{"ID":4627063886},"Source":{"ID":"c4af9824-fd44-4515-bbd0-d4cf83f9888a"},"Destinations":[{"ID":"6310353a-eed7-44a1-b2bc-d017f4f33d64","Name":"Redox
+        Data On Demand Sandbox Destination (s)"}]}}'
+  recorded_at: Sat, 22 Aug 2020 22:20:21 GMT
+recorded_with: VCR 6.0.0
