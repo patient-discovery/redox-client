@@ -12,7 +12,10 @@ module Redox
         event_date_time: DateTime.now.iso8601,
         destinations: [Redox::Models::Destination.new(id: destination_id)]
       }
-      response_type.from_redox_json source.execute_query self
+      result_body = source.execute_query self
+      response = response_type.from_redox_json result_body
+      response._body = result_body
+      response
     end
   end
 end

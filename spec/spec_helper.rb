@@ -22,6 +22,7 @@ end
 VCR.configure do |vcr|
   vcr.cassette_library_dir = "spec/cassettes"
   vcr.hook_into :faraday
+
   vcr.register_request_matcher :body_without_event_date_time do |actual_request, expected_request|
     actual = JSON.parse actual_request.body
     expected = JSON.parse expected_request.body
@@ -32,11 +33,36 @@ VCR.configure do |vcr|
     end
     actual == expected
   end
+
   vcr.default_cassette_options = {
-    record: :once,
+    record: :new_episodes,
     match_requests_on: %i[method uri body_without_event_date_time],
     erb: true
   }
+
+  {
+    "apiKey" => "test-api-key",
+    "secret" => "test-secret"
+  }.each do |original, replacement|
+    vcr.filter_sensitive_data(replacement) do |interaction|
+      JSON.parse(interaction.request.body)[original]
+    end
+  end
+
+  {
+    "accessToken" => "test-access-token",
+    "refreshToken" => "test-refresh-token",
+    "expires" => "<%= DateTime.now + 1 %>"
+  }.each do |original, replacement|
+    vcr.filter_sensitive_data(replacement) do |interaction|
+      JSON.parse(interaction.response.body)[original]
+    end
+  end
+
+  vcr.filter_sensitive_data("Bearer test-access-token") do |interaction|
+    interaction.request.headers["Authorization"]&.first
+  end
+
   vcr.configure_rspec_metadata!
 end
 

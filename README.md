@@ -87,6 +87,14 @@ After checking out the repo, run `bin/setup` to install gem dependencies and a g
 ### Testing
 This project uses `rspec` and [VCR](https://relishapp.com/vcr/vcr/docs). VCR provides fast deterministic testing of HTTP APIs. It also makes it possible to set up any server response you want to test by authoring the server responses directly. This comes in handy when trying to test edge cases that might occur but are hard to reproduce.
 
+Some effort has been made to filter credentials from recorded HTTP interactions, but you should always carefully review all your changes before pushing them to avoid credential exposure.
+
+To make a new test with a new recording:
+
+```bash
+env REDOX_API_KEY=my-key REDOX_SECRET=my-secret rspec
+```
+
 ### Coding Style
 This project adheres to [StandardRB](https://github.com/testdouble/standard/blob/master/README.md). Additionally
 [# frozen_string_literal](https://bugs.ruby-lang.org/issues/8976#note-30) is required in Ruby source files, and is enforced by Rubocop.
