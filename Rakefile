@@ -60,6 +60,7 @@ task "prepare:tag" do
   end
 end
 
+desc "Prepare a gem release"
 task "prepare:release": [
   "release:guard_clean", "test", "prepare:version", "prepare:changelog", "prepare:tag"
 ] do
