@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Redox::PatientSearch::Query do
+RSpec.describe Redox::Scheduling::Booked do
   let(:source) { create_source "test-api-key", "test-secret" }
   let(:destination_id) { "6310353a-eed7-44a1-b2bc-d017f4f33d64" }
 
@@ -39,7 +39,7 @@ RSpec.describe Redox::PatientSearch::Query do
   end
 
   context "no match" do
-    it "returns empty results with empty Array of visits", :vcr do
+    it "returns results with empty Array of visits", :vcr do
       query = Redox::Scheduling::Booked.new(
         start_date_time: DateTime.new(1984, 1, 1),
         end_date_time: DateTime.new(1984, 1, 2)
