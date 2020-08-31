@@ -4,6 +4,7 @@ require_relative "redox/version"
 
 require_relative "redox/model"
 require_relative "redox/models/address"
+require_relative "redox/models/contact"
 require_relative "redox/models/demographics"
 require_relative "redox/models/destination"
 require_relative "redox/models/error"

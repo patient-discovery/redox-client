@@ -23,6 +23,9 @@ RSpec.describe Redox::Scheduling::Booked do
         ),
         Redox::Models::PatientIdentifier.new(id_type: "NIST", id: "a1d4ee8aba494ca")
       ]
+      expect(visit.patient.demographics.phone_number.home).to eq "+18088675301"
+      expect(visit.patient.demographics.email_addresses).to eq ["tim@example.net"]
+      expect(visit.patient.contacts).to have(1).item
       expect(visit.location).to eq Redox::Models::Location.new(
         room: "136",
         department: "3N",

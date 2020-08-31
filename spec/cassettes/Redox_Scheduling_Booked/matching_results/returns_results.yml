@@ -113,7 +113,9 @@ http_interactions:
         up","AttendingProvider":{"ID":"4356789876","IDType":"NPI","FirstName":"Pat","LastName":"Granite","Address":{"StreetAddress":"123
         Main St.","City":"Madison","State":"WI","County":"Dane","ZIP":"53703","Country":"USA"},"PhoneNumber":{"Office":"+16085551234"},"Credentials":["MD"]},"Location":{"Room":"136","Department":"3N","Type":"Inpatient","Facility":"RES
         General Hospital"},"Patient":{"Identifiers":[{"ID":"0000000001","IDType":"MR"},{"ID":"e167267c-16c9-4fe3-96ae-9cff5703e90a","IDType":"EHRID"},{"ID":"a1d4ee8aba494ca","IDType":"NIST"}],"Demographics":{"FirstName":"Timothy","MiddleName":"Paul","LastName":"Bixby","DOB":"2008-01-06","Sex":"Male","Address":{"StreetAddress":"4762
-        Hickory Street","City":"Monroe","State":"WI","County":"Green","ZIP":"53566","Country":"US"},"PhoneNumber":{"Home":"+18088675301"},"MaritalStatus":"Married","IsDeceased":false,"SSN":"101-01-0001","Race":"White","Language":"en"},"Contacts":[{"FirstName":"Barbara","LastName":"Bixby","PhoneNumber":{"Home":"+18088675303","Office":"+17077543758","Mobile":"+19189368865"},"EmailAddresses":["barb.bixby@test.net"],"Address":{"StreetAddress":"4762
+        Hickory Street","City":"Monroe","State":"WI","County":"Green","ZIP":"53566","Country":"US"},
+        "EmailAddresses":["tim@example.net"],
+        "PhoneNumber":{"Home":"+18088675301"},"MaritalStatus":"Married","IsDeceased":false,"SSN":"101-01-0001","Race":"White","Language":"en"},"Contacts":[{"FirstName":"Barbara","LastName":"Bixby","PhoneNumber":{"Home":"+18088675303","Office":"+17077543758","Mobile":"+19189368865"},"EmailAddresses":["barb.bixby@test.net"],"Address":{"StreetAddress":"4762
         Hickory Street","City":"Monroe","State":"WI","County":"Green","ZIP":"53566","Country":"US"},"RelationToPatient":"Mother","Roles":["Emergency
         Contact"]}]}},{"VisitNumber":6503,"VisitDateTime":"2020-06-06T19:05:33.370Z","Duration":15,"Status":"Scheduled","Reason":"Check
         up","AttendingProvider":{"ID":"4356789876","IDType":"NPI","FirstName":"Pat","LastName":"Granite","Address":{"StreetAddress":"123
