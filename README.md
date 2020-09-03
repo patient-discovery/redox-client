@@ -1,5 +1,6 @@
 [![Gem Version](https://img.shields.io/gem/v/redox-client.svg)](https://badge.fury.io/rb/redox-client)
 [![Ruby Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://github.com/testdouble/standard)
+![Test](https://github.com/patient-discovery/redox-client/workflows/Test/badge.svg)
 
 # redox-client - Ruby gem facade for Redox APIs
 
