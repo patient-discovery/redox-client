@@ -7,6 +7,11 @@
 
 ### Removed
 
+## [0.4.0] - 2020-09-04
+### Added
+- add email and phone to demographics
+- add patient contacts
+
 ## [0.3.0] - 2020-08-27
 ### Added
 - _body attribute containing raw response text on query results
@@ -26,4 +31,5 @@
 [0.1.0]: https://github.com/patient-discovery/redox-client/releases/tag/v0.1.0
 [0.2.0]: https://github.com/patient-discovery/redox-client/releases/tag/v0.2.0
 [0.3.0]: https://github.com/patient-discovery/redox-client/releases/tag/v0.3.0
-[Unreleased]: https://github.com/patient-discovery/redox-client/compare/v0.3.0...HEAD
+[0.4.0]: https://github.com/patient-discovery/redox-client/releases/tag/v0.4.0
+[Unreleased]: https://github.com/patient-discovery/redox-client/compare/v0.4.0...HEAD
