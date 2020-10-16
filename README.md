@@ -79,6 +79,7 @@ Since `Redox::Source` has shared state, i.e., the access token and its expiratio
 
 - PatientSearch.Query
 - Scheduling.Booked
+- Media.New
 - File Upload
 
 ## Development

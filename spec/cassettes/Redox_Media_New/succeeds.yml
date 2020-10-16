@@ -1,0 +1,169 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.redoxengine.com/auth/authenticate
+    body:
+      encoding: UTF-8
+      string: '{"apiKey":"test-api-key","secret":"test-secret"}'
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Faraday v1.0.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Tue, 27 Oct 2020 21:25:17 GMT
+      content-type:
+      - application/json; charset=utf-8
+      content-length:
+      - '145'
+      connection:
+      - keep-alive
+      strict-transport-security:
+      - max-age=300; includeSubdomains;
+      content-security-policy:
+      - 'default-src https:; style-src https: ''unsafe-inline''; object-src ''none'''
+      x-content-security-policy:
+      - 'default-src https:; style-src https: ''unsafe-inline''; object-src ''none'''
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - deny
+      x-xss-protection:
+      - 1; mode=block
+      referrer-policy:
+      - same-origin
+      cache-control:
+      - private, no-cache, no-store, must-revalidate
+      expires:
+      - "-1"
+      pragma:
+      - no-cache
+      etag:
+      - W/"91-cZTfrnLUgngfHtQFr/pZtw"
+      vary:
+      - Accept-Encoding
+    body:
+      encoding: UTF-8
+      string: '{"accessToken":"test-access-token","expires":"<%= DateTime.now + 1
+        %>","refreshToken":"test-refresh-token"}'
+  recorded_at: Tue, 27 Oct 2020 21:25:17 GMT
+- request:
+    method: post
+    uri: https://api.redoxengine.com/endpoint
+    body:
+      encoding: UTF-8
+      string: '{"Patient":{"Identifiers":[{"IDType":"MR","ID":"42"}]},"Visit":{"VisitNumber":42},"Media":{"FileType":"TEXT","FileName":"hello.txt","FileContents":"aGVsbG8K\n","DocumentType":"Greeting","DocumentID":"42","Provider":{"ID":"provider-1"},"Availability":"Available"},"Meta":{"DataModel":"Media","EventType":"New","EventDateTime":"2020-10-27T17:25:16-04:00","Destinations":[{"ID":"af394f14-b34a-464f-8d24-895f370af4c9"}]}}'
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Faraday v1.0.1
+      Authorization:
+      - Bearer test-access-token
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Tue, 27 Oct 2020 21:25:17 GMT
+      content-type:
+      - application/json; charset=utf-8
+      content-length:
+      - '213'
+      connection:
+      - keep-alive
+      strict-transport-security:
+      - max-age=300; includeSubdomains;
+      content-security-policy:
+      - 'default-src https:; style-src https: ''unsafe-inline''; object-src ''none'''
+      x-content-security-policy:
+      - 'default-src https:; style-src https: ''unsafe-inline''; object-src ''none'''
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - deny
+      x-xss-protection:
+      - 1; mode=block
+      referrer-policy:
+      - same-origin
+      cache-control:
+      - private, no-cache, no-store, must-revalidate
+      expires:
+      - "-1"
+      pragma:
+      - no-cache
+      etag:
+      - W/"d5-W3JSHvw0jlFVj0yGtdeuBA"
+      vary:
+      - Accept-Encoding
+    body:
+      encoding: UTF-8
+      string: '{"Meta":{"DataModel":"Media","EventType":"New","Message":{"ID":4242},"Source":{"ID":"49f9e2cf-9f6a-4081-8616-8e5845fda1bf"},"Destinations":[{"ID":"af394f14-b34a-464f-8d24-895f370af4c9","Name":"Redox
+        EMR"}]}}'
+  recorded_at: Tue, 27 Oct 2020 21:25:17 GMT
+- request:
+    method: post
+    uri: https://candi.redoxengine.com/auth/authenticate
+    body:
+      encoding: UTF-8
+      string: '{"apiKey":"test-api-key","secret":"test-secret"}'
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Faraday v1.0.1
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      date:
+      - Tue, 27 Oct 2020 21:25:30 GMT
+      content-type:
+      - text/html; charset=utf-8
+      content-length:
+      - '15'
+      connection:
+      - keep-alive
+      strict-transport-security:
+      - max-age=300; includeSubdomains;
+      content-security-policy:
+      - 'default-src https:; style-src https: ''unsafe-inline''; object-src ''none'''
+      x-content-security-policy:
+      - 'default-src https:; style-src https: ''unsafe-inline''; object-src ''none'''
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - deny
+      x-xss-protection:
+      - 1; mode=block
+      referrer-policy:
+      - same-origin
+      cache-control:
+      - private, no-cache, no-store, must-revalidate
+      expires:
+      - "-1"
+      pragma:
+      - no-cache
+      etag:
+      - W/"f-RGtBbVNe0/VH/NZT3BHUnA"
+      vary:
+      - Accept-Encoding
+    body:
+      encoding: UTF-8
+      string: Invalid request
+  recorded_at: Tue, 27 Oct 2020 21:25:30 GMT
+recorded_with: VCR 6.0.0

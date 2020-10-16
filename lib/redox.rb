@@ -9,6 +9,7 @@ require_relative "redox/models/demographics"
 require_relative "redox/models/destination"
 require_relative "redox/models/error"
 require_relative "redox/models/location"
+require_relative "redox/models/media"
 require_relative "redox/models/message"
 require_relative "redox/models/meta"
 require_relative "redox/models/patient_identifier"
@@ -17,11 +18,13 @@ require_relative "redox/models/phone_number"
 require_relative "redox/models/provider"
 require_relative "redox/models/visit"
 
-require_relative "redox/file_upload"
-require_relative "redox/query"
 require_relative "redox/source"
+require_relative "redox/query"
+require_relative "redox/file_upload"
+
 require_relative "redox/patient_search/query.rb"
 require_relative "redox/scheduling/booked.rb"
+require_relative "redox/media/new.rb"
 
 module Redox
   class Error < StandardError

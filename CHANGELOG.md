@@ -3,6 +3,7 @@
 ## [Unreleased]
 ### Added
 - File Upload
+- Media.New
 
 ### Changed
 - fixed: source was re-authenticating every request (DateTime math was incorrect)

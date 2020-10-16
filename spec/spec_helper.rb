@@ -85,9 +85,9 @@ RSpec::Matchers.define :eq_json do |expected|
   diffable
 end
 
-def create_source(api_key, secret)
+def create_source(api_key, secret, endpoint = "https://candi.redoxengine.com")
   Redox::Source.new(
-    endpoint: "https://candi.redoxengine.com",
+    endpoint: ENV["REDOX_ENDPOINT"] || endpoint,
     api_key: ENV["REDOX_API_KEY"] || api_key,
     secret: ENV["REDOX_SECRET"] || secret,
     test_mode: true
