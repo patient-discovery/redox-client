@@ -2,7 +2,7 @@
 
 RSpec.describe Redox::FileUpload do
   before(:context) do
-    @source = create_source "test-api-key", "test-secret"
+    @source = create_source
     VCR.use_cassette("upload-authenticate") do
       @source.ensure_access_token
     end

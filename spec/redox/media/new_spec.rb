@@ -3,7 +3,7 @@
 require "base64"
 
 RSpec.describe Redox::Media::New do
-  let(:source) { create_source "test-api-key", "test-secret", "https://api.redoxengine.com" }
+  let(:source) { create_source endpoint: "https://api.redoxengine.com" }
   let(:destination_id) { "af394f14-b34a-464f-8d24-895f370af4c9" }
 
   it "succeeds", :vcr do
