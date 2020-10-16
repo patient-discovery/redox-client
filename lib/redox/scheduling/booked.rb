@@ -12,8 +12,6 @@ module Redox
         v.respond_to?(:iso8601) ? v.iso8601 : v.to_s
       }
 
-      redox_property :Patient, coerce: Models::Patient
-
       def response_type
         BookedResponse
       end
