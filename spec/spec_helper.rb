@@ -3,6 +3,7 @@
 require "rspec/expectations"
 require "rspec/collection_matchers"
 require "bundler/setup"
+require "base64"
 require "redox"
 require "json"
 require "vcr"
@@ -19,6 +20,13 @@ RSpec.configure do |config|
   end
 end
 
+# Parse JSON string or base64 encoded JSON string
+def decode_and_parse_json(string)
+  JSON.parse(string)
+rescue
+  JSON.parse(Base64.decode64(string))
+end
+
 VCR.configure do |vcr|
   vcr.cassette_library_dir = "spec/cassettes"
   vcr.hook_into :faraday
@@ -31,6 +39,8 @@ VCR.configure do |vcr|
       actual["Meta"].delete "EventDateTime"
       expected["Meta"].delete "EventDateTime"
     end
+    actual == expected
+  rescue
     actual == expected
   end
 
@@ -45,7 +55,8 @@ VCR.configure do |vcr|
     "secret" => "test-secret"
   }.each do |original, replacement|
     vcr.filter_sensitive_data(replacement) do |interaction|
-      JSON.parse(interaction.request.body)[original]
+      decode_and_parse_json(interaction.request.body)[original]
+    rescue
     end
   end
 
@@ -55,7 +66,8 @@ VCR.configure do |vcr|
     "expires" => "<%= DateTime.now + 1 %>"
   }.each do |original, replacement|
     vcr.filter_sensitive_data(replacement) do |interaction|
-      JSON.parse(interaction.response.body)[original]
+      decode_and_parse_json(interaction.response.body)[original]
+    rescue
     end
   end
 

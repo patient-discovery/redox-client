@@ -17,6 +17,7 @@ require_relative "redox/models/phone_number"
 require_relative "redox/models/provider"
 require_relative "redox/models/visit"
 
+require_relative "redox/file_upload"
 require_relative "redox/query"
 require_relative "redox/source"
 require_relative "redox/patient_search/query.rb"

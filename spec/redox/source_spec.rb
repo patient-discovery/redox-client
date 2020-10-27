@@ -8,6 +8,7 @@ RSpec.describe Redox::Source do
         subject.ensure_access_token
         expect(subject.access_token).to eq("test-access-token")
         expect(subject.access_token_expires_at).to be > DateTime.now
+        expect(subject.token_expiring_soon?).to be(false)
       end
     end
 
@@ -23,8 +24,8 @@ RSpec.describe Redox::Source do
 
       it "re-authenticates and saves the new token", :vcr do
         subject.instance_variable_set(:@access_token, "almost-expired-token")
-        subject.instance_variable_set(:@access_token_expires_at, DateTime.now + 30)
-
+        subject.instance_variable_set(:@access_token_expires_at, add_seconds(DateTime.now, 30))
+        expect(subject.token_expiring_soon?).to be(true)
         subject.ensure_access_token
         expect(subject.access_token).to eq("test-new-token")
       end
@@ -35,11 +36,15 @@ RSpec.describe Redox::Source do
 
       it "does not make an HTTP request", :vcr do
         subject.access_token = "valid-token"
-        subject.instance_variable_set(:@access_token_expires_at, DateTime.now + 3600)
+        subject.instance_variable_set(:@access_token_expires_at, add_seconds(DateTime.now, 3600))
 
         subject.ensure_access_token
         expect(subject.access_token).to eq("valid-token")
       end
     end
   end
+end
+
+def add_seconds(datetime, seconds)
+  datetime + Rational(seconds, 60 * 60 * 24)
 end
