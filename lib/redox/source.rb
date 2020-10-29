@@ -21,6 +21,7 @@ class Redox::Source
         content_type: "application/json"
       }
     )
+    @endpoint = endpoint
     @api_key = api_key
     @secret = secret
     @test_mode = test_mode
