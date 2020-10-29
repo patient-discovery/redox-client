@@ -10,7 +10,7 @@ class Redox::Source
   SECONDS_PER_DAY = 60 * 60 * 24
   ACCESS_TOKEN_EXPIRATION_BUFFER = Rational(300, SECONDS_PER_DAY)
 
-  attr_reader :access_token_expires_at
+  attr_reader :endpoint, :api_key, :access_token_expires_at
 
   def initialize(endpoint:, api_key:, secret:, test_mode: true)
     super()
