@@ -3,6 +3,7 @@
 require "rspec/expectations"
 require "rspec/collection_matchers"
 require "bundler/setup"
+require "base64"
 require "redox"
 require "json"
 require "vcr"
@@ -19,6 +20,17 @@ RSpec.configure do |config|
   end
 end
 
+# Parse JSON string or base64 encoded JSON string
+def decode_and_parse_json(string)
+  JSON.parse(string)
+rescue
+  JSON.parse(Base64.decode64(string))
+end
+
+def vcr_recording?
+  ENV["VCR_MODE"] == "record"
+end
+
 VCR.configure do |vcr|
   vcr.cassette_library_dir = "spec/cassettes"
   vcr.hook_into :faraday
@@ -32,10 +44,13 @@ VCR.configure do |vcr|
       expected["Meta"].delete "EventDateTime"
     end
     actual == expected
+  rescue
+    actual == expected
   end
 
   vcr.default_cassette_options = {
-    record: :new_episodes,
+    record: vcr_recording? ? :all : :once,
+    record_on_error: false,
     match_requests_on: %i[method uri body_without_event_date_time],
     erb: true
   }
@@ -45,7 +60,8 @@ VCR.configure do |vcr|
     "secret" => "test-secret"
   }.each do |original, replacement|
     vcr.filter_sensitive_data(replacement) do |interaction|
-      JSON.parse(interaction.request.body)[original]
+      decode_and_parse_json(interaction.request.body)[original]
+    rescue
     end
   end
 
@@ -55,7 +71,8 @@ VCR.configure do |vcr|
     "expires" => "<%= DateTime.now + 1 %>"
   }.each do |original, replacement|
     vcr.filter_sensitive_data(replacement) do |interaction|
-      JSON.parse(interaction.response.body)[original]
+      decode_and_parse_json(interaction.response.body)[original]
+    rescue
     end
   end
 
@@ -73,11 +90,24 @@ RSpec::Matchers.define :eq_json do |expected|
   diffable
 end
 
-def create_source(api_key, secret)
-  Redox::Source.new(
-    endpoint: "https://candi.redoxengine.com",
-    api_key: ENV["REDOX_API_KEY"] || api_key,
-    secret: ENV["REDOX_SECRET"] || secret,
-    test_mode: true
-  )
+def create_source(
+  endpoint: "https://candi.redoxengine.com",
+  api_key: "test-api-key",
+  secret: "test-secret"
+)
+  if vcr_recording?
+    Redox::Source.new(
+      endpoint: ENV["REDOX_ENDPOINT"],
+      api_key: ENV["REDOX_API_KEY"],
+      secret: ENV["REDOX_SECRET"],
+      test_mode: true
+    )
+  else
+    Redox::Source.new(
+      endpoint: endpoint,
+      api_key: api_key,
+      secret: secret,
+      test_mode: true
+    )
+  end
 end

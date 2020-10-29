@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe Redox::PatientSearch::Query do
-  let(:source) { create_source "test-api-key", "test-secret" }
+  let(:source) { create_source }
   let(:destination_id) { "6310353a-eed7-44a1-b2bc-d017f4f33d64" }
 
   context "match" do

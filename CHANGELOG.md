@@ -2,10 +2,14 @@
 
 ## [Unreleased]
 ### Added
+- File Upload
+- Media.New
 
 ### Changed
+- fixed: source was re-authenticating every request (DateTime math was incorrect)
 
 ### Removed
+- remove SchedulingBooked.Query Patient property. It is not present on the corresponding redox model and was never used.
 
 ## [0.4.0] - 2020-09-04
 ### Added

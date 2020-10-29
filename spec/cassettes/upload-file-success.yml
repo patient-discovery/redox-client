@@ -1,0 +1,80 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://blob.redoxengine.com/upload
+    body:
+      encoding: UTF-8
+      base64_string: |
+        LS0tLS0tLS0tLS0tLVJ1YnlNdWx0aXBhcnRQb3N0LWRlNGRjNTViMTMzYjlh
+        MTI4NzViYWIxNTE3ZjE2MjE2DQpDb250ZW50LURpc3Bvc2l0aW9uOiBmb3Jt
+        LWRhdGE7IG5hbWU9ImZpbGUiOyBmaWxlbmFtZT0idGV4dC50eHQiDQpDb250
+        ZW50LUxlbmd0aDogNA0KQ29udGVudC1UeXBlOiB0ZXh0L3BsYWluDQpDb250
+        ZW50LVRyYW5zZmVyLUVuY29kaW5nOiBiaW5hcnkNCg0KdGVzdA0KLS0tLS0t
+        LS0tLS0tLVJ1YnlNdWx0aXBhcnRQb3N0LWRlNGRjNTViMTMzYjlhMTI4NzVi
+        YWIxNTE3ZjE2MjE2LS0NCg==
+    headers:
+      Authorization:
+      - Bearer test-access-token
+      Accept:
+      - application/json
+      User-Agent:
+      - Faraday v1.0.1
+      Content-Type:
+      - multipart/form-data; boundary=-----------RubyMultipartPost-de4dc55b133b9a12875bab1517f16216
+      Content-Length:
+      - '286'
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      date:
+      - Tue, 27 Oct 2020 18:36:03 GMT
+      content-type:
+      - application/json; charset=utf-8
+      content-length:
+      - '47'
+      connection:
+      - keep-alive
+      strict-transport-security:
+      - max-age=300; includeSubdomains;
+      content-security-policy:
+      - 'default-src https:; style-src https: ''unsafe-inline''; object-src ''none'''
+      x-content-security-policy:
+      - 'default-src https:; style-src https: ''unsafe-inline''; object-src ''none'''
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - deny
+      x-xss-protection:
+      - 1; mode=block
+      referrer-policy:
+      - same-origin
+      cache-control:
+      - private, no-cache, no-store, must-revalidate
+      expires:
+      - "-1"
+      pragma:
+      - no-cache
+      access-control-allow-origin:
+      - ''
+      access-control-allow-credentials:
+      - ''
+      access-control-allow-methods:
+      - ''
+      access-control-allow-headers:
+      - ''
+      access-control-expose-headers:
+      - ''
+      etag:
+      - W/"2f-8ADRFFb7tMQv1Th/01WaSQ"
+      vary:
+      - Accept-Encoding
+    body:
+      encoding: UTF-8
+      base64_string: |
+        eyJVUkkiOiJodHRwczovL2Jsb2IucmVkb3hlbmdpbmUuY29tLzE0NjUyNjE0
+        In0=
+  recorded_at: Tue, 27 Oct 2020 18:36:03 GMT
+recorded_with: VCR 6.0.0

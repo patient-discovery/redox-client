@@ -79,6 +79,8 @@ Since `Redox::Source` has shared state, i.e., the access token and its expiratio
 
 - PatientSearch.Query
 - Scheduling.Booked
+- Media.New
+- File Upload
 
 ## Development
 ***Nota Bene**: This project uses [VCR](https://relishapp.com/vcr/vcr/docs) to record HTTP requests and responses and play them back during tests. Do NOT use Redox production credentials when developing tests.*
@@ -91,11 +93,26 @@ This project uses `rspec` and [VCR](https://relishapp.com/vcr/vcr/docs). VCR pro
 
 Some effort has been made to filter credentials from recorded HTTP interactions, but you should always carefully review all your changes before pushing them to avoid credential exposure.
 
-To make a new test with a new recording:
+### Recording and Playing Back Cassettes
+The `VCR_MODE` environment variable controls whether VCR is recording cassettes or playing them back. When recoding cassettes the following environment variables are used to call Redox APIs:
+
+- `REDOX_ENDPOINT`: base URL of Redox API endpoint (e.g., https://api.redoxengine.com/)
+- `REDOX_API_KEY`: Redox `apiKey` used by /auth/authenticate
+- `REDOX_SECRET`: Redox `secret` used by /auth/authenticate
+
+Set these to the credentials for the Redox environment you are using for testing.
+
+When playing back cassettes these environment variables are ignored and no API requests are made to Redox.
+
+To make a new test with a new recording, set environment variables above then:
 
 ```bash
-env REDOX_API_KEY=my-key REDOX_SECRET=my-secret rspec
+env VCR_MODE=record rspec spec/my_new_spec.rb
 ```
+
+This will record all API requests made by the test. Be **careful**: if you run all the tests with `VCR_MODE=record` it will re-record all the cassettes.
+
+The default mode is playback, so to playback cassettes just run `rspec`.
 
 ### Coding Style
 This project adheres to [StandardRB](https://github.com/testdouble/standard/blob/master/README.md). Additionally

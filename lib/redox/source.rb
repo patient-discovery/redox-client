@@ -7,7 +7,8 @@ require "faraday"
 class Redox::Source
   include MonitorMixin
 
-  ACCESS_TOKEN_EXPIRATION_BUFFER_SECONDS = 300
+  SECONDS_PER_DAY = 60 * 60 * 24
+  ACCESS_TOKEN_EXPIRATION_BUFFER = Rational(300, SECONDS_PER_DAY)
 
   attr_reader :access_token_expires_at
 
@@ -63,11 +64,11 @@ class Redox::Source
     end
   end
 
-  private
-
   def token_expiring_soon?
-    DateTime.now > @access_token_expires_at - ACCESS_TOKEN_EXPIRATION_BUFFER_SECONDS
+    DateTime.now > @access_token_expires_at - ACCESS_TOKEN_EXPIRATION_BUFFER
   end
+
+  private
 
   def authenticate
     self.access_token = nil
