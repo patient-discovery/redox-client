@@ -2,6 +2,13 @@
 
 ## [Unreleased]
 ### Added
+
+### Changed
+
+### Removed
+
+## [0.5.0] - 2020-10-29
+### Added
 - File Upload
 - Media.New
 
@@ -36,4 +43,5 @@
 [0.2.0]: https://github.com/patient-discovery/redox-client/releases/tag/v0.2.0
 [0.3.0]: https://github.com/patient-discovery/redox-client/releases/tag/v0.3.0
 [0.4.0]: https://github.com/patient-discovery/redox-client/releases/tag/v0.4.0
-[Unreleased]: https://github.com/patient-discovery/redox-client/compare/v0.4.0...HEAD
+[0.5.0]: https://github.com/patient-discovery/redox-client/releases/tag/v0.5.0
+[Unreleased]: https://github.com/patient-discovery/redox-client/compare/v0.5.0...HEAD
