@@ -2,6 +2,15 @@
 
 ## [Unreleased]
 ### Added
+- Flowsheet.New data model
+
+### Changed
+
+### Removed
+
+## [0.6.0] - 2020-11-02
+### Added
+- Flowsheet.New data model
 
 ### Changed
 
@@ -44,4 +53,5 @@
 [0.3.0]: https://github.com/patient-discovery/redox-client/releases/tag/v0.3.0
 [0.4.0]: https://github.com/patient-discovery/redox-client/releases/tag/v0.4.0
 [0.5.0]: https://github.com/patient-discovery/redox-client/releases/tag/v0.5.0
-[Unreleased]: https://github.com/patient-discovery/redox-client/compare/v0.5.0...HEAD
+[0.6.0]: https://github.com/patient-discovery/redox-client/releases/tag/v0.6.0
+[Unreleased]: https://github.com/patient-discovery/redox-client/compare/v0.6.0...HEAD
