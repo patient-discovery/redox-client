@@ -80,6 +80,8 @@ VCR.configure do |vcr|
     interaction.request.headers["Authorization"]&.first
   end
 
+  vcr.debug_logger = File.open("vcr-debug.log", "w") if ENV["VCR_DEBUG"]
+
   vcr.configure_rspec_metadata!
 end
 

@@ -12,14 +12,14 @@ http_interactions:
       Content-Type:
       - application/json
       User-Agent:
-      - Faraday v1.0.1
+      - Faraday v1.1.0
   response:
     status:
       code: 200
       message: OK
     headers:
       date:
-      - Sat, 22 Aug 2020 22:21:36 GMT
+      - Sat, 13 Feb 2021 20:03:38 GMT
       content-type:
       - application/json; charset=utf-8
       content-length:
@@ -47,27 +47,27 @@ http_interactions:
       pragma:
       - no-cache
       etag:
-      - W/"91-uEFBemdhi2ZutpPS7XDEVA"
+      - W/"91-xio6WRaqFNAElb4f6kEdfQ"
       vary:
       - Accept-Encoding
     body:
       encoding: UTF-8
       string: '{"accessToken":"test-access-token","expires":"<%= DateTime.now + 1
         %>","refreshToken":"test-refresh-token"}'
-  recorded_at: Sat, 22 Aug 2020 22:21:36 GMT
+  recorded_at: Sat, 13 Feb 2021 20:03:38 GMT
 - request:
     method: post
     uri: https://candi.redoxengine.com/endpoint
     body:
       encoding: UTF-8
-      string: '{"StartDateTime":"1984-01-01T00:00:00+00:00","EndDateTime":"1984-01-02T00:00:00+00:00","Meta":{"DataModel":"Scheduling","EventType":"Booked","EventDateTime":"2020-08-22T18:21:36-04:00","Destinations":[{"ID":"0a07ac7c-577d-46b8-865f-1a75a7dfcd12"}]}}'
+      string: '{"StartDateTime":"2020-01-01T00:00:00+00:00","EndDateTime":"2022-01-01T00:00:00+00:00","Visit":{"Patients":[{"Identifiers":[{"IDType":"ST01","ID":"60067224"}]}]},"Meta":{"DataModel":"Scheduling","EventType":"Booked","EventDateTime":"2021-02-13T15:03:38-05:00","Destinations":[{"ID":"0a07ac7c-577d-46b8-865f-1a75a7dfcd12"}]}}'
     headers:
       Accept:
       - application/json
       Content-Type:
       - application/json
       User-Agent:
-      - Faraday v1.0.1
+      - Faraday v1.1.0
       Authorization:
       - Bearer test-access-token
   response:
@@ -76,11 +76,11 @@ http_interactions:
       message: OK
     headers:
       date:
-      - Sat, 22 Aug 2020 22:21:36 GMT
+      - Sat, 13 Feb 2021 20:03:38 GMT
       content-type:
       - application/json; charset=utf-8
-      content-length:
-      - '268'
+      transfer-encoding:
+      - chunked
       connection:
       - keep-alive
       strict-transport-security:
@@ -104,12 +104,13 @@ http_interactions:
       pragma:
       - no-cache
       etag:
-      - W/"10c-lA28HZWg9qpuJfHPBw3Flg"
+      - W/"498-sL7q36vPqpNJUdvDroLsSg"
       vary:
       - Accept-Encoding
     body:
       encoding: UTF-8
-      string: '{"Visits":[],"Meta":{"DataModel":"Scheduling","EventType":"Booked","Message":{"ID":4627063887},"Source":{"ID":"c4af9824-fd44-4515-bbd0-d4cf83f9888a"},"Destinations":[{"ID":"0a07ac7c-577d-46b8-865f-1a75a7dfcd12","Name":"Redox
-        Data On Demand Sandbox Destination (s)"}]}}'
-  recorded_at: Sat, 22 Aug 2020 22:21:36 GMT
+      string: '{"Visits":[{"VisitNumber":"9841","VisitDateTime":"2021-02-05T17:45:00.000Z","Duration":20,"Status":"Arrived","Reason":"ESTABLISHED","AttendingProvider":{"ID":"120302","IDType":"STARPROVID","FirstName":"Timothy","LastName":"Pluard"},"ReferringProvider":{"ID":"105851","IDType":"STARPROVID","FirstName":"Carl","LastName":"Dirks"},"VisitProvider":{"ID":"120302","IDType":"STARPROVID","FirstName":"Timothy","LastName":"Pluard"},"Location":{"Department":"KABCC","Facility":"KCABC"},"Patient":{"Identifiers":[{"ID":"60067224","IDType":"ST01"}],"Demographics":{"FirstName":"Testpt","LastName":"Cadphynd","DOB":"1965-09-29","Sex":"Female","Address":{"StreetAddress":"758
+        ANY STREET","City":"KANSAS CITY","State":"MO","County":"JACKSON","ZIP":"64114","Country":"US"},"PhoneNumber":{"Home":"+18164442233"},"EmailAddresses":["none@email.com"],"IsDeceased":false,"SSN":"912-29-1965","Race":"White","Language":"en"}}}],"Meta":{"DataModel":"Scheduling","EventType":"Booked","Message":{"ID":6352609957},"Source":{"ID":"c4af9824-fd44-4515-bbd0-d4cf83f9888a"},"Destinations":[{"ID":"0a07ac7c-577d-46b8-865f-1a75a7dfcd12","Name":"St.
+        Lukes Health System (KC) Data on Demand Destination (s)"}]}}'
+  recorded_at: Sat, 13 Feb 2021 20:03:38 GMT
 recorded_with: VCR 6.0.0

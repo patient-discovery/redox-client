@@ -60,7 +60,7 @@ http_interactions:
     uri: https://candi.redoxengine.com/endpoint
     body:
       encoding: UTF-8
-      string: '{"StartDateTime":"2016-01-01T00:00:00+00:00","Meta":{"DataModel":"Scheduling","EventType":"Booked","EventDateTime":"2020-08-22T17:50:30-04:00","Destinations":[{"ID":"6310353a-eed7-44a1-b2bc-d017f4f33d64"}]}}'
+      string: '{"StartDateTime":"2016-01-01T00:00:00+00:00","Meta":{"DataModel":"Scheduling","EventType":"Booked","EventDateTime":"2020-08-22T17:50:30-04:00","Destinations":[{"ID":"0a07ac7c-577d-46b8-865f-1a75a7dfcd12"}]}}'
     headers:
       Accept:
       - application/json
@@ -1047,7 +1047,7 @@ http_interactions:
         General Hospital"},"Patient":{"Identifiers":[{"ID":"0000000001","IDType":"MR"},{"ID":"e167267c-16c9-4fe3-96ae-9cff5703e90a","IDType":"EHRID"},{"ID":"a1d4ee8aba494ca","IDType":"NIST"}],"Demographics":{"FirstName":"Timothy","MiddleName":"Paul","LastName":"Bixby","DOB":"2008-01-06","Sex":"Male","Address":{"StreetAddress":"4762
         Hickory Street","City":"Monroe","State":"WI","County":"Green","ZIP":"53566","Country":"US"},"PhoneNumber":{"Home":"+18088675301"},"MaritalStatus":"Married","IsDeceased":false,"SSN":"101-01-0001","Race":"White","Language":"en"},"Contacts":[{"FirstName":"Barbara","LastName":"Bixby","PhoneNumber":{"Home":"+18088675303","Office":"+17077543758","Mobile":"+19189368865"},"EmailAddresses":["barb.bixby@test.net"],"Address":{"StreetAddress":"4762
         Hickory Street","City":"Monroe","State":"WI","County":"Green","ZIP":"53566","Country":"US"},"RelationToPatient":"Mother","Roles":["Emergency
-        Contact"]}]}}],"Meta":{"DataModel":"Scheduling","EventType":"Booked","Message":{"ID":4627063885},"Source":{"ID":"c4af9824-fd44-4515-bbd0-d4cf83f9888a"},"Destinations":[{"ID":"6310353a-eed7-44a1-b2bc-d017f4f33d64","Name":"Redox
+        Contact"]}]}}],"Meta":{"DataModel":"Scheduling","EventType":"Booked","Message":{"ID":4627063885},"Source":{"ID":"c4af9824-fd44-4515-bbd0-d4cf83f9888a"},"Destinations":[{"ID":"0a07ac7c-577d-46b8-865f-1a75a7dfcd12","Name":"Redox
         Data On Demand Sandbox Destination (s)"}]}}'
   recorded_at: Sat, 22 Aug 2020 21:50:31 GMT
 - request:
