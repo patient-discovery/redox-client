@@ -13,8 +13,8 @@ RSpec.describe Redox::Scheduling::Booked do
       expect(result.visits.length).to eq 187
       visits = result.visits.map { |v| [v.visit_number, v] }.to_h
 
-      visit = visits[3514]
-      expect(visit.visit_number).to eq 3514
+      visit = visits["3514"]
+      expect(visit.visit_number).to eq "3514"
       expect(visit.patient.identifiers).to eq [
         Redox::Models::PatientIdentifier.new(id_type: "MR", id: "0000000001"),
         Redox::Models::PatientIdentifier.new(

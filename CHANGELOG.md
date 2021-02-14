@@ -2,10 +2,10 @@
 
 ## [Unreleased]
 ### Added
-- Flowsheet.New data model
+- Scheduling.Booked query can optionally restrict results to specific patients.
 
 ### Changed
-
+- VisitNumber now appears to be a string in redox (previously it was an integer). This doesn't affect this library as strings, numbers, and booleans are passed through as-is after parsing the JSON. The update was to the test recordings and specs to assert the correct type.
 ### Removed
 
 ## [0.6.0] - 2020-11-02
