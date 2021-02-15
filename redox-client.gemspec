@@ -20,7 +20,9 @@ Gem::Specification.new do |gem|
   end
   gem.require_paths = ["lib"]
 
+  gem.add_development_dependency "debase", "~> 0.2.4.1"
   gem.add_development_dependency "rake", "~> 12.0"
+  gem.add_development_dependency "ruby-debug-ide", "~> 0.7.2"
   gem.add_development_dependency "rspec", "~> 3.9"
   gem.add_development_dependency "rspec-collection_matchers", "~> 1.2"
   gem.add_development_dependency "simplecov", "~> 0.18.5"

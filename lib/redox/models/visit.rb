@@ -21,6 +21,7 @@ module Redox
       redox_property :Type
       redox_property :Instructions
       redox_property :Patient, coerce: Patient
+      redox_property :Patients, coerce: Array[Patient]
       redox_property :AttendingProvider, coerce: Provider
       redox_property :ConsultingProvider, coerce: Provider
       redox_property :ReferringProvider, coerce: Provider

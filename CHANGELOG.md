@@ -2,12 +2,20 @@
 
 ## [Unreleased]
 ### Added
-- Flowsheet.New data model
 
 ### Changed
 
 ### Removed
 
+## [0.7.0] - 2021-02-15
+[0.7.0]: https://github.com/patient-discovery/redox-client/releases/tag/v0.7.0
+### Added
+- Scheduling.Booked query can optionally restrict results to specific patients.
+
+### Changed
+- VisitNumber now appears to be a string in redox (previously it was an integer). This doesn't affect this library as strings, numbers, and booleans are passed through as-is after parsing the JSON. The update was to the test recordings and specs to assert the correct type.
+
+### Removed
 ## [0.6.0] - 2020-11-02
 ### Added
 - Flowsheet.New data model
@@ -54,4 +62,4 @@
 [0.4.0]: https://github.com/patient-discovery/redox-client/releases/tag/v0.4.0
 [0.5.0]: https://github.com/patient-discovery/redox-client/releases/tag/v0.5.0
 [0.6.0]: https://github.com/patient-discovery/redox-client/releases/tag/v0.6.0
-[Unreleased]: https://github.com/patient-discovery/redox-client/compare/v0.6.0...HEAD
+[Unreleased]: https://github.com/patient-discovery/redox-client/compare/v0.7.0...HEAD

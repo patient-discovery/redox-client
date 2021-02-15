@@ -2,9 +2,9 @@
 
 RSpec.describe Redox::Scheduling::Booked do
   let(:source) { create_source }
-  let(:destination_id) { "6310353a-eed7-44a1-b2bc-d017f4f33d64" }
+  let(:destination_id) { "0a07ac7c-577d-46b8-865f-1a75a7dfcd12" }
 
-  context "matching results" do
+  describe "matching results" do
     it "returns results", :vcr do
       query = Redox::Scheduling::Booked.new(
         start_date_time: DateTime.new(2016, 1, 1)
@@ -13,8 +13,8 @@ RSpec.describe Redox::Scheduling::Booked do
       expect(result.visits.length).to eq 187
       visits = result.visits.map { |v| [v.visit_number, v] }.to_h
 
-      visit = visits[3514]
-      expect(visit.visit_number).to eq 3514
+      visit = visits["3514"]
+      expect(visit.visit_number).to eq "3514"
       expect(visit.patient.identifiers).to eq [
         Redox::Models::PatientIdentifier.new(id_type: "MR", id: "0000000001"),
         Redox::Models::PatientIdentifier.new(
@@ -41,7 +41,7 @@ RSpec.describe Redox::Scheduling::Booked do
     end
   end
 
-  context "no match" do
+  describe "no match" do
     it "returns results with empty Array of visits", :vcr do
       query = Redox::Scheduling::Booked.new(
         start_date_time: DateTime.new(1984, 1, 1),
@@ -49,6 +49,29 @@ RSpec.describe Redox::Scheduling::Booked do
       )
       result = query.perform source, destination_id
       expect(result.visits).to eq []
+    end
+  end
+
+  describe "querying for a specific patient", :vcr do
+    it "returns visits for that patient" do
+      query = Redox::Scheduling::Booked.new(
+        start_date_time: DateTime.new(2020, 1, 1),
+        end_date_time: DateTime.new(2022, 1, 1),
+        visit: Redox::Models::Visit.new(
+          patients: [
+            Redox::Models::Patient.new(
+              identifiers: [
+                Redox::Models::PatientIdentifier.new(
+                  id_type: "ST01", id: "60067224"
+                )
+              ]
+            )
+          ]
+        )
+      )
+
+      result = query.perform source, destination_id
+      expect(result.visits.map(&:visit_number)).to eq(["9841"])
     end
   end
 end

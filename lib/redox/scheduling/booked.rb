@@ -11,6 +11,7 @@ module Redox
       redox_property :EndDateTime, coerce: ->(v) {
         v.respond_to?(:iso8601) ? v.iso8601 : v.to_s
       }
+      redox_property :Visit, coerce: Models::Visit
 
       def response_type
         BookedResponse
