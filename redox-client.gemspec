@@ -12,7 +12,7 @@ Gem::Specification.new do |gem|
   gem.summary = "Ruby library for consuming Redox JSON APIs"
   gem.required_ruby_version = Gem::Requirement.new(">= 2.6.0")
   gem.metadata["source_code_uri"] = gem.homepage
-  gem.metadata["changelog_uri"] = "#{gem.homepage}/blob/master/CHANGELOG.md"
+  gem.metadata["changelog_uri"] = "#{gem.homepage}/blob/main/CHANGELOG.md"
 
   gem.license = "MIT"
   gem.files = Dir.chdir(File.expand_path(__dir__)) do

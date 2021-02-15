@@ -130,7 +130,7 @@ Run `rake` to run the style checks. Run `rake fix` to fix violations.
 ### Release Process
 This project uses [Semantic Versioning](https://semver.org)
 
-Prepare release on master branch, then run:
+Prepare release on main branch, then run:
 
 ```
 rake prepare:release
