@@ -25,6 +25,7 @@ require_relative "redox/source"
 require_relative "redox/query"
 require_relative "redox/file_upload"
 
+require_relative "redox/patient_admin/discharge.rb"
 require_relative "redox/patient_search/query.rb"
 require_relative "redox/scheduling/booked.rb"
 require_relative "redox/media/new.rb"
