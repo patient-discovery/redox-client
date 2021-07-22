@@ -1,0 +1,220 @@
+{
+  "Meta": {
+     "DataModel": "Order",
+     "EventType": "New",
+     "EventDateTime": "2021-07-19T17:52:26.661Z",
+     "Test": true,
+     "Source": {
+        "ID": "7ce6f387-c33c-417d-8682-81e83628cbd9",
+        "Name": "Redox Dev Tools"
+     },
+     "Destinations": [
+        {
+           "ID": "af394f14-b34a-464f-8d24-895f370af4c9",
+           "Name": "Redox EMR"
+        }
+     ],
+     "Logs": [
+        {
+           "ID": "d9f5d293-7110-461e-a875-3beb089e79f3",
+           "AttemptID": "925d1617-2fe0-468c-a14c-f8c04b572c54"
+        }
+     ],
+     "Message": {
+        "ID": 5565
+     },
+     "Transmission": {
+        "ID": 12414
+     },
+     "FacilityCode": null
+  },
+  "Patient": {
+     "Identifiers": [
+        {
+           "ID": "9876543210",
+           "IDType": "MR"
+        }
+     ],
+     "Demographics": {
+        "FirstName": "Timothy",
+        "MiddleName": "Paul",
+        "LastName": "Bixby",
+        "DOB": "2008-01-06",
+        "SSN": "101-01-0001",
+        "Sex": "Male",
+        "Race": "White",
+        "IsHispanic": null,
+        "MaritalStatus": "Married",
+        "IsDeceased": null,
+        "DeathDateTime": null,
+        "PhoneNumber": {
+           "Home": "+18088675301",
+           "Office": null,
+           "Mobile": null
+        },
+        "EmailAddresses": [
+          "tim.bixby@example.net"
+        ],
+        "Language": "en",
+        "Citizenship": [],
+        "Address": {
+           "StreetAddress": "4762 Hickory Street",
+           "City": "Monroe",
+           "State": "WI",
+           "ZIP": "53566",
+           "County": "Green",
+           "Country": "US"
+        }
+     },
+     "Notes": []
+  },
+  "Visit": {
+     "VisitNumber": "1234",
+     "AccountNumber": null,
+     "PatientClass": null,
+     "VisitDateTime": "2015-04-21T13:54:49.863Z",
+     "AttendingProvider": {
+        "ID": "4356789876",
+        "IDType": "NPI",
+        "FirstName": "Pat",
+        "LastName": "Granite",
+        "Credentials": [
+           "MD"
+        ],
+        "Address": {
+           "StreetAddress": "123 Main St.",
+           "City": "Madison",
+           "State": "WI",
+           "ZIP": "53703",
+           "County": "Dane",
+           "Country": "USA"
+        },
+        "EmailAddresses": [],
+        "PhoneNumber": {
+           "Office": "+16085551234"
+        },
+        "Location": {
+           "Type": null,
+           "Facility": null,
+           "Department": null,
+           "Room": null
+        }
+     },
+     "Location": {
+        "Type": "Inpatient",
+        "Facility": "RES General Hospital",
+        "Department": "3N",
+        "Room": "136",
+        "Bed": "B"
+     }
+  },
+  "Order": {
+     "ID": "123456789",
+     "ApplicationOrderID": null,
+     "Status": "New",
+     "TransactionDateTime": "2015-05-06T06:00:58.872Z",
+     "CollectionDateTime": "2015-05-06T06:00:58.872Z",
+     "Specimen": {
+        "Source": null,
+        "BodySite": null,
+        "ID": null
+     },
+     "Procedure": {
+        "Code": "49086-2",
+        "Codeset": null,
+        "Description": "First trimester maternal screen with nuchal translucency panel"
+     },
+     "Provider": {
+        "NPI": "4356789876",
+        "ID": "4356789876",
+        "IDType": "NPI",
+        "FirstName": "Pat",
+        "LastName": "Granite",
+        "Credentials": [
+           "MD"
+        ],
+        "Address": {
+           "StreetAddress": "123 Main St.",
+           "City": "Madison",
+           "State": "WI",
+           "ZIP": "53703",
+           "County": "Dane",
+           "Country": "USA"
+        },
+        "EmailAddresses": [],
+        "PhoneNumber": {
+           "Office": "+16085551234"
+        },
+        "Location": {
+           "Type": null,
+           "Facility": null,
+           "Department": null,
+           "Room": null
+        }
+     },
+     "ResultCopyProviders": [],
+     "OrderingFacility": {
+        "Name": null,
+        "Address": {
+           "StreetAddress": null,
+           "City": null,
+           "State": null,
+           "ZIP": null,
+           "County": null,
+           "Country": null
+        },
+        "PhoneNumber": null
+     },
+     "Priority": "Stat",
+     "Expiration": null,
+     "Comments": null,
+     "Notes": [],
+     "Diagnoses": [
+        {
+           "Code": "Z31.41",
+           "Codeset": "ICD-10",
+           "Name": "Encounter for fertility testing",
+           "Type": null,
+           "DocumentedDateTime": null
+        }
+     ],
+     "ClinicalInfo": [
+        {
+           "Code": "QUESTION001",
+           "Codeset": null,
+           "Description": "Estimated Due Date",
+           "Value": "2015-10-05",
+           "Units": null,
+           "Abbreviation": null,
+           "Notes": []
+        },
+        {
+           "Code": "QUESTION002",
+           "Codeset": null,
+           "Description": "Ethnicity",
+           "Value": "White",
+           "Units": null,
+           "Abbreviation": "W",
+           "Notes": []
+        },
+        {
+           "Code": "QUESTION010",
+           "Codeset": null,
+           "Description": "Is this a twin pregnancy?",
+           "Value": "Singleton",
+           "Units": null,
+           "Abbreviation": "sng",
+           "Notes": []
+        },
+        {
+           "Code": "QUESTION011",
+           "Codeset": null,
+           "Description": "Dating Method",
+           "Value": "LMP",
+           "Units": null,
+           "Abbreviation": "lmp",
+           "Notes": []
+        }
+     ]
+  }
+}
